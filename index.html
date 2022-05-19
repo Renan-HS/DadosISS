@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Atividade API</title>
+</head>
+<body>
+    <h1>Dados da ISS</h1>
+    Latitude:
+    <p id="lat">.</p>
+    Latitude:
+    <p id="lon">.</p>
+    Latitude:
+    <p id="alt">.</p>
+    <button onclick="ISS()">Mostrar Dados da ISS</button>
+    <script>
+        const url = "https://api.wheretheiss.at/v1/satellites/25544"
+        async function ISS() {
+            const resposta = await fetch(url);
+            const data = await resposta.json();
+            console.log(data);
+            const { latitude, longitude, altitude } = data
+            document.getElementById('lat').textContent = latitude;
+            document.getElementById('lon').textContent = longitude;
+            document.getElementById('alt').textContent = altitude;
+        }
+    </script>
+</body>
+</html>
